@@ -44,7 +44,8 @@
                                 </div><!-- .nk-block-head -->
                                 <div class="nk-block">
                                     <div class="card card-bordered">
-                                        <div class="card-inner-group">
+                                        <form action="{{ url('add-patient') }}" method="POST" class="card-inner-group">
+                                            @csrf
                                             <div class="card-inner">
                                                 <div class="nk-block-head">
                                                     <div class="nk-block-head-content">
@@ -56,6 +57,9 @@
                                                         <div class="col-xxl-3 col-md-4">
                                                             <div class="form-group">
                                                                 <label class="form-label" for="full-name">Full Name</label>
+                                                                @error('name')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
                                                                 <div class="form-control-wrap">
                                                                     <input type="text" class="form-control" name="name" id="full-name" placeholder="Full Name">
                                                                 </div>
@@ -68,6 +72,9 @@
                                                                     <div class="form-icon form-icon-right">
                                                                         <em class="icon ni ni-calendar"></em>
                                                                     </div>
+                                                                    @error('dob')
+                                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                                    @enderror
                                                                     <input type="text" class="form-control date-picker" name="dob" data-date-format="dd-mm-yyyy" placeholder="dd-mm-yyyy">
                                                                 </div>
                                                             </div>
@@ -76,6 +83,9 @@
                                                             <div class="form-group">
                                                                 <label class="form-label">Gender</label>
                                                                 <div class="form-control-wrap">
+                                                                    @error('gender')
+                                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                                    @enderror
                                                                     <select class="form-select js-select2" name="gender" data-placeholder="Select Gender">
                                                                         <option value="">Select Gender</option>
                                                                         <option value="Male">Male</option>
@@ -88,6 +98,9 @@
                                                         <div class="col-xxl-3 col-md-4">
                                                             <div class="form-group">
                                                                 <label class="form-label" for="phone-no">Phone</label>
+                                                                @error('phone')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
                                                                 <div class="form-control-wrap">
                                                                     <input type="number" class="form-control" name="phone" placeholder="Phone no">
                                                                 </div>
@@ -96,6 +109,9 @@
                                                         <div class="col-xxl-3 col-md-4">
                                                             <div class="form-group">
                                                                 <label class="form-label" for="email">Email</label>
+                                                                @error('email')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
                                                                 <div class="form-control-wrap">
                                                                     <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                                                                 </div>
@@ -104,6 +120,9 @@
                                                         <div class="col-xxl-3 col-md-4">
                                                             <div class="form-group">
                                                                 <label class="form-label">National ID</label>
+                                                                @error('nid')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
                                                                 <div class="form-control-wrap">
                                                                     <div class="form-file">
                                                                         <input type="file" multiple name="nid" class="form-file-input" id="nid">
@@ -115,6 +134,9 @@
                                                         <div class="col-xxl-3 col-md-4">
                                                             <div class="form-group">
                                                                 <label class="form-label">Adddress</label>
+                                                                @error('address')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
                                                                 <div class="form-control-wrap">
                                                                     <input type="text" class="form-control" name="address" id="address" placeholder="Address">
                                                                 </div>
@@ -134,6 +156,9 @@
                                                         <div class="col-xxl-3 col-md-4">
                                                             <div class="form-group">
                                                                 <label class="form-label">Blood Group</label>
+                                                                @error('b_group')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
                                                                 <div class="form-control-wrap">
                                                                     <select class="form-select js-select2" name="b_group" data-placeholder="Select Group">
                                                                         <option value="">Select</option>
@@ -152,30 +177,45 @@
                                                         <div class="col-xxl-3 col-md-4">
                                                             <div class="form-group">
                                                                 <label class="form-label">Height</label>
+                                                                @error('height')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
                                                                 <input type="text" class="form-control" name="height" id="height" placeholder="Height">
                                                             </div>
                                                         </div><!--col-->
                                                         <div class="col-xxl-3 col-md-4">
                                                             <div class="form-group">
                                                                 <label class="form-label">Weight</label>
+                                                                @error('width')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
                                                                 <input type="text" class="form-control" name="width" id="weight" placeholder="Weight">
                                                             </div>
                                                         </div><!--col-->
                                                         <div class="col-xxl-3 col-md-4">
                                                             <div class="form-group">
                                                                 <label class="form-label">Blood Pressure</label>
+                                                                @error('bp')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
                                                                 <input type="text" class="form-control" name="bp" id="bp" placeholder="Blood Pressure">
                                                             </div>
                                                         </div><!--col-->
                                                         <div class="col-xxl-3 col-md-4">
                                                             <div class="form-group">
                                                                 <label class="form-label">Pulse</label>
+                                                                @error('pulse')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
                                                                 <input type="text" class="form-control" name="pulse" id="pulse" placeholder="Pulse">
                                                             </div>
                                                         </div><!--col-->
                                                         <div class="col-xxl-3 col-md-4">
                                                             <div class="form-group">
                                                                 <label class="form-label">Temperature</label>
+                                                                @error('temp')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
                                                                 <input type="text" class="form-control" name="temp" id="temperature" placeholder="Temperature">
                                                             </div>
                                                         </div><!--col-->
@@ -193,6 +233,9 @@
                                                         <div class="col-xxl-6 col-md-8">
                                                             <div class="form-group">
                                                                 <label class="form-label">Symptoms Title</label>
+                                                                @error('sym_title')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
                                                                 <div class="form-control-wrap">
                                                                     <input type="text" class="form-control" name="sym_title" id="symptoms" placeholder="Symptoms">
                                                                 </div>
@@ -201,6 +244,9 @@
                                                         <div class="col-xxl-3 col-md-4">
                                                             <div class="form-group">
                                                                 <label class="form-label">Symptoms Type</label>
+                                                                @error('sym_type')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
                                                                 <div class="form-control-wrap">
                                                                     <select class="form-select js-select2" name="sym_type" data-placeholder="Select Symptoms">
                                                                         <option value="">Select</option>
@@ -215,6 +261,9 @@
                                                         <div class="col-xxl-3 col-md-4">
                                                             <div class="form-group">
                                                                 <label class="form-label">Casualty</label>
+                                                                @error('casualty')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
                                                                 <div class="form-control-wrap">
                                                                     <select class="form-select js-select2" name="casualty" data-placeholder="Select Casualty">
                                                                         <option value="">Select</option>
@@ -227,6 +276,9 @@
                                                         <div class="col-xxl-3 col-md-4">
                                                             <div class="form-group">
                                                                 <label class="form-label">Department</label>
+                                                                @error('dep')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
                                                                 <div class="form-control-wrap">
                                                                     <select class="form-select js-select2" name="dep" data-placeholder="Select Department">
                                                                         <option value="">Select</option>
@@ -251,6 +303,9 @@
                                                         <div class="col-xxl-3 col-md-4">
                                                             <div class="form-group">
                                                                 <label class="form-label">Consultant Doctor</label>
+                                                                @error('doctor')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
                                                                 <div class="form-control-wrap">
                                                                     <select class="form-select js-select2" name="doctor" data-placeholder="Select Doctor">
                                                                         <option value="">Select</option>
@@ -266,6 +321,9 @@
                                                         <div class="col-xxl-3 col-md-4">
                                                             <div class="form-group">
                                                                 <label class="form-label">Patient Type</label>
+                                                                @error('patient_type')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
                                                                 <div class="form-control-wrap">
                                                                     <select class="form-select js-select2" name="patient_type" data-placeholder="Select Type">
                                                                         <option value="">Select</option>
@@ -278,6 +336,9 @@
                                                         <div class="col-xxl-3 col-md-4">
                                                             <div class="form-group">
                                                                 <label class="form-label">Admit Date</label>
+                                                                @error('ad_date')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
                                                                 <div class="form-control-wrap">
                                                                     <div class="form-icon form-icon-right">
                                                                         <em class="icon ni ni-calendar"></em>
@@ -289,6 +350,9 @@
                                                         <div class="col-xxl-3 col-md-4">
                                                             <div class="form-group">
                                                                 <label class="form-label">Bed Group</label>
+                                                                @error('bed_group')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
                                                                 <div class="form-control-wrap">
                                                                     <select class="form-select js-select2" name="bed_group" data-placeholder="Select Bed Group">
                                                                         <option value="default_option">Select</option>
@@ -305,6 +369,9 @@
                                                         <div class="col-xxl-3 col-md-4">
                                                             <div class="form-group">
                                                                 <label class="form-label">Bed Number</label>
+                                                                @error('bed_number')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
                                                                 <div class="form-control-wrap">
                                                                     <select class="form-select js-select2" name="bed_number" data-placeholder="Select Bed">
                                                                         <option value="">Select</option>
@@ -321,6 +388,9 @@
                                                         <div class="col-xxl-3 col-md-4">
                                                             <div class="form-group">
                                                                 <label class="form-label">Test Report</label>
+                                                                @error('report')
+                                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                                @enderror
                                                                 <div class="form-control-wrap">
                                                                     <div class="form-file">
                                                                         <input type="file" name="report" multiple class="form-file-input" id="testReport">
@@ -347,7 +417,7 @@
                                                     </div><!--row-->
                                                 </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div><!-- .card -->
                                 </div><!-- .nk-block -->
                             </div>

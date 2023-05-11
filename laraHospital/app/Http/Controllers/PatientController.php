@@ -31,7 +31,7 @@ class PatientController extends Controller
     {
         $app = new Patient();
 
-        $validator = Validator::make($request->all(), [
+        $validator = $request->validate([
             'name' => 'required|min:3|max:15',
             'dob' => 'required',
             'gender' => 'required',
@@ -39,23 +39,57 @@ class PatientController extends Controller
             'email' => 'required',
             'nid' => 'required',
             'address' => 'required',
+
+            'b_group' => 'required',
+            'height' => 'required',
+            'width' => 'required',
+            'bp' => 'required',
+            'pulse' => 'required',
+            'temp' => 'required',
+            
+            'sym_title' => 'required',
+            'sym_type' => 'required',
+            'casualty' => 'required',
+            'dep' => 'required',
+            'doctor' => 'required',
+            'patient_type' => 'required',
+            'ad_date' => 'required',
+            'bed_group' => 'required',
+            'bed_number' => 'required',
+            'report' => 'required',
         ], [
             'name.required' => 'Patient name required.',
             'name.min' => 'Patient name minimum 3 character required.',
             'name.max' => 'Patient name maximum 15 character required.',
-            'mobile.required' => 'Phone number required.',
-            'mobile.min' => 'Phone number must be 11 digit.',
-            'mobile.max' => 'Phone number must be 11 digit.',
-            'appDate.required' => 'Appointment date required.',
-            'serial.required' => 'Serial number required.',
+            'dob.required' => 'Date of birth required.',
+            'gender.required' => 'Gender required.',
+            'phone.required' => 'Phone number required.',
+            'email.required' => 'Email required.',
+            'nid.required' => 'NID card required.',
+            'address.required' => 'Patient address required.',
+
+            'b_group.required' => 'Blood group required.',
+            'height.required' => 'Height required.',
+            'width.required' => 'Width required.',
+            'bp.required' => 'Blood pressure required.',
+            'pulse.required' => 'Pulse required.',
+            'temp.required' => 'Temperature required.',
+            
+            'sym_title.required' => 'Symptoms title required.',
+            'sym_type.required' => 'Symptoms type required.',
+            'casualty.required' => 'Casualty required.',
             'dep.required' => 'Department required.',
             'doctor.required' => 'Doctor required.',
-            'status.required' => 'Status required.'
+            'patient_type.required' => 'Patient type required.',
+            'ad_date.required' => 'Admit date required.',
+            'bed_group.required' => 'Bed group required.',
+            'bed_number.required' => 'Bed number required.',
+            'doctor.required' => 'Doctor required.',
+            'report.required' => 'Report required.',
         ]);
 
-        if ($validator->fails()) {
-        } else {
-            $app->name = $request->name;
+        if ($validator->passes()) {
+            /* $app->name = $request->name;
             $app->phone = $request->mobile;
             $app->date = $request->appDate;
             $app->serial = $request->serial;
@@ -64,13 +98,12 @@ class PatientController extends Controller
             $app->status = $request->status;
             $app->app_id = uniqid().time();
 
-            $app->save();
-
-            return response()->json([
-                'status' => 1,
-                'success' => 'Appointment added successfully'
-            ]);
+            $app->save(); */
+        }else {
+            /* return $validator->errors(); */
         }
+
+        return view('patient-add');
     }
 
     /**

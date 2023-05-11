@@ -122,11 +122,9 @@
                                             </div>
 
                                             <!-- .card-inner -->
-                                            @if(count($data) > 10)
-                                                <div class="card-inner">
-                                                    {{ $data->links('pagination::bootstrap-5') }}
-                                                </div>
-                                            @endif
+                                            <div class="card-inner">
+                                                {{ $data->links('pagination::bootstrap-5') }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
